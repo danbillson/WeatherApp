@@ -18,16 +18,16 @@ const Search = () => {
 
   return (
     <Container>
-      <label htmlFor="city" hidden>
-        City
-      </label>
-      <Input
-        name="city"
-        type="text"
-        placeholder="e.g. London"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
+      <Label>
+        <p>City</p>
+        <Input
+          name="city"
+          type="text"
+          placeholder="e.g. London"
+          value={value}
+          onChange={(e) => setValue(e.target.value)}
+        />
+      </Label>
       <Dropdown list={suggestions} />
     </Container>
   )
@@ -39,11 +39,25 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   position: relative;
+  margin: 2rem 0;
+`
+
+const Label = styled.label`
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  p {
+    margin: 0 0 -3px 1.5rem;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    z-index: 1;
+  }
 `
 
 const Input = styled.input`
   padding: 0.5rem 1rem;
-  margin: 2rem 0;
   min-width: 200px;
   border: 2px solid #777;
   border-bottom-width: 5px;

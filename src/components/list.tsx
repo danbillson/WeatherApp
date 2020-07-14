@@ -12,7 +12,7 @@ const CityDetail = ({ info }: { info: City }) => {
       <p>{name}</p>
       <Info>
         <Icon
-          src={`http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`}
+          src={`https://openweathermap.org/img/wn/${weather[0].icon}@2x.png`}
           alt={weather[0].description}
         />
         <Wind>
@@ -91,6 +91,7 @@ const Wind = styled.div`
 `
 
 const Temp = styled.p`
+  min-width: 35px;
   font-size: 24px;
   font-weight: 700;
   color: #777;
