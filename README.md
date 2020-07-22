@@ -1,44 +1,40 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Wind Speeds - https://windspeed.netlify.app/
 
-## Available Scripts
+## Introduction
 
-In the project directory, you can run:
+This app is a minimalist site for tracking windspeed and forecasts across the UK.
 
-### `yarn start`
+The app was bootstrapped with the CRA typescript template and at it's core uses localStorage through a persisted state hook to save the user's favourite locations and [SWR](https://github.com/vercel/swr) for data fetching in a very clean way.
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+## Choices
 
-### `yarn test`
+### Typescript
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Brings a slightly larger overhead with the need of typing but makes up for its time in code suggestions/completions and debugging by providing a much more concise way of writing code to avoid the inevitable `Cannot read propery * of undefined`
 
-### `yarn build`
+### Hooks & Context
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Hooks and Context have become a huge part of React as of late and have created an incredibly light way for managing app state.
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### Styled Components
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+CSS-in-JS is another approach that has taken off in recent years with its ease in tying into React to provide props to a component like you would anywhere else in the app and using those values to toggle styles appropriately.
 
-### `yarn eject`
+### SWR
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+This has become my favourite package due to its simplicity and range of built in features that makes a world of difference to fetching data by providing a nice little hook which gives you your data, isFetching and error so that you can handle each case appropriately.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Considerations
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Using an API
 
-## Learn More
+An API could have been used for a more permanant solution instead of just using localStorage however for the size and nature of the app I don't think it would have provided any real benefit and would have required some sort of user login to save the data to the user, for this reason localStorage was adopted.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+An api like https://github.com/DanBillson/ExpenseApi would have fit in quite well if there was the need for it.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Redux
+
+Redux is of course a very popular method for managing state however the traditional ways of using redux can introduce a huge amount of bloat often needing 4-5 different files just to handle one action. More recently there are some very interesting new ways that redux have suggested doing things with their [toolkit](https://redux-toolkit.js.org/) which I have tested out https://github.com/DanBillson/porkchop/tree/master/chops/brisket and can be seen at https://brisket.netlify.app/ however, for this use case hooks wins again as the entire state for managing user's favourite cities was writen in less than 20 lines of code, can be used from anywhere in the app and provides all of the needed functionaility.
+
